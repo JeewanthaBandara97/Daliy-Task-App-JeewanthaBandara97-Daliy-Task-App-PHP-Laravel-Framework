@@ -1,0 +1,55 @@
+
+composer create-project laravel/laravel ProjectName
+/***************************************************/
+
+
+php artisan serve
+/***************************************************/
+
+
+php artisan make:Controller ControllerName
+/***************************************************/
+
+
+php artisan make:Model ModelName
+/***************************************************/
+
+--------------------------------
+connect database---
+   .env
+       DB_CONNECTION=mysql
+       DB_HOST=127.0.0.1
+       DB_PORT=3306
+       DB_DATABASE=laravel
+       DB_USERNAME=root
+       DB_PASSWORD=
+--------------------------------------------
+php artisan make:Model ModelName -m
+------------------------------------------------
+table create ----
+  
+    public function up()
+    {
+        Schema::create('task', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('task');
+            $table->boolean('iscompleted')->default(0);
+
+            $table->timestamps();
+        });
+    }
+-------------------------------  
+    AppServiceProvider.php 
+      1.
+       use Illuminate\Support\Facades\Schema; //add
+      2.
+       public function boot()
+         {
+            schema::defaultStringLength(191);
+         }       
+--------------------------------
+php artisan migrate
+
+/***************************************************/
+
+
